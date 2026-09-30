@@ -1,0 +1,226 @@
+# =====================================================================
+# PYTHON + ML .gitignore
+# Rule of thumb: ignore anything that is (1) generated, (2) huge,
+# (3) specific to your machine, or (4) secret.
+# =====================================================================
+
+
+# ---------------------------------------------------------------------
+# 1. PYTHON BYTECODE & CACHES  (generated automatically, never source)
+# ---------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+
+# ---------------------------------------------------------------------
+# 2. VIRTUAL ENVIRONMENTS  (huge, machine-specific, rebuildable from
+#    requirements.txt / pyproject.toml)
+# ---------------------------------------------------------------------
+.venv/
+venv/
+env/
+ENV/
+.conda/
+conda-env/
+
+
+# ---------------------------------------------------------------------
+# 3. PACKAGING & BUILD OUTPUT  (created when you build/install a package)
+# ---------------------------------------------------------------------
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+wheels/
+pip-wheel-metadata/
+.installed.cfg
+MANIFEST
+
+# Lock files: uncomment the ones you DON'T want to track.
+# (For apps, committing the lock file is usually good: reproducible installs.)
+# poetry.lock
+# Pipfile.lock
+# uv.lock
+
+
+# ---------------------------------------------------------------------
+# 4. SECRETS & LOCAL CONFIG  (NEVER commit these: bots scrape GitHub
+#    for leaked keys within minutes)
+# ---------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets.json
+credentials.json
+config.local.*
+
+
+# ---------------------------------------------------------------------
+# 5. TESTING, COVERAGE & LINTER CACHES  (generated when you run tools)
+# ---------------------------------------------------------------------
+.pytest_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.hypothesis/
+.mypy_cache/
+.ruff_cache/
+.pytype/
+.pyre/
+
+
+# ---------------------------------------------------------------------
+# 6. JUPYTER NOTEBOOKS
+#    .ipynb files themselves are tracked (they're your work), but the
+#    checkpoint copies Jupyter auto-saves are just noise.
+#    Tip: use `nbstripout` to strip cell outputs before commit, since
+#    outputs (plots, tables) bloat the repo and create messy diffs.
+# ---------------------------------------------------------------------
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+profile_default/
+ipython_config.py
+
+
+# ---------------------------------------------------------------------
+# 7. ML DATASETS  (too big for git; git stores full history of every
+#    version, so one 2GB commit bloats the repo forever)
+#    Use DVC, Git LFS, or a download script instead.
+# ---------------------------------------------------------------------
+data/
+datasets/
+raw_data/
+processed_data/
+*.csv
+*.tsv
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.db
+*.sqlite
+*.sqlite3
+*.zip
+*.tar
+*.tar.gz
+*.7z
+
+# Keep small sample/fixture data if you want it in the repo:
+# !data/sample/
+# !tests/fixtures/*.csv
+
+# Keep empty folders (git can't track empty dirs) by adding a .gitkeep
+!.gitkeep
+
+
+# ---------------------------------------------------------------------
+# 8. ML MODELS, WEIGHTS & CHECKPOINTS  (often hundreds of MB to GBs)
+#    Store in a model registry / Hugging Face Hub / cloud storage / LFS.
+# ---------------------------------------------------------------------
+models/
+checkpoints/
+weights/
+saved_models/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.tflite
+*.pb
+*.bin
+*.joblib
+*.keras
+*.model
+*.gguf
+
+
+# ---------------------------------------------------------------------
+# 9. EXPERIMENT TRACKING & TRAINING LOGS  (generated every run; can
+#    produce thousands of files)
+# ---------------------------------------------------------------------
+runs/
+logs/
+*.log
+wandb/
+mlruns/
+mlartifacts/
+lightning_logs/
+tensorboard/
+events.out.tfevents.*
+outputs/
+multirun/
+.neptune/
+.comet/
+catboost_info/
+.hydra/
+
+# Framework download caches (re-downloaded automatically)
+.cache/
+.torch/
+.keras/
+.huggingface/
+hf_cache/
+
+
+# ---------------------------------------------------------------------
+# 10. DVC  (DVC tracks big files via small .dvc pointer files.
+#     Commit the .dvc files, NOT the cache.)
+# ---------------------------------------------------------------------
+/.dvc/cache
+/.dvc/tmp
+# *.dvc files should be committed, so they are NOT ignored here.
+
+
+# ---------------------------------------------------------------------
+# 11. DOCS & GENERATED REPORTS
+# ---------------------------------------------------------------------
+docs/_build/
+site/
+.ipynb_checkpoints
+
+
+# ---------------------------------------------------------------------
+# 12. EDITORS & IDEs  (personal settings; teammates use different ones)
+# ---------------------------------------------------------------------
+.vscode/
+!.vscode/settings.json.example
+.idea/
+*.swp
+*.swo
+*~
+.spyderproject
+.spyproject
+.ropeproject
+
+
+# ---------------------------------------------------------------------
+# 13. OPERATING SYSTEM JUNK
+# ---------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
+
+
+# ---------------------------------------------------------------------
+# 14. MISC TEMP FILES
+# ---------------------------------------------------------------------
+tmp/
+temp/
+*.tmp
+*.bak
+scratch/
